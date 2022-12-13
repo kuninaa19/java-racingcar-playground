@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.constants.CarConstants;
-import racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,5 +26,9 @@ public class Cars {
 
     public int count() {
         return cars.size();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
