@@ -4,20 +4,36 @@ import racingcar.constants.CarConstants;
 
 public class Car {
     private final Name name;
-    private int position;
+    private Position position;
 
     public Car(String carName) {
         this.name = new Name(carName);
-        position = CarConstants.CAR_INITIAL_POSITION;
+        this.position = new Position();
     }
 
-    public int getPosition() {
+    public void move(int randomNumber) {
+        if (moveCondition(randomNumber)) {
+            position = position.move();
+        }
+    }
+
+    private boolean moveCondition(int randomNumber) {
+        return randomNumber >= CarConstants.CAR_MOVE_CONDITION;
+    }
+
+    public Position getPosition() {
         return position;
     }
 
-    public void move(int number) {
-        if (number >= CarConstants.CAR_MOVE_CONDITION) {
-            this.position++;
+    public Position getMaxPosition(Position maxPosition) {
+        if (position.largerThan(maxPosition)) {
+            return position;
         }
+
+        return maxPosition;
+    }
+
+    public boolean samePosition(Position maxPosition) {
+        return position.equals(maxPosition);
     }
 }
