@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(String inputs) {
         cars = createCars(inputs);
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     private static List<Car> createCars(String inputs) {
@@ -30,5 +34,15 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public Position getMaxPosition() {
+        Position maxPosition = new Position();
+
+        for (Car car : cars) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+
+        return maxPosition;
     }
 }
