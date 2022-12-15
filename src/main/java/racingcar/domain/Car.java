@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.constants.CarConstants;
+import racingcar.constants.MoveConstants;
 
 public class Car {
     private final Name name;
@@ -18,7 +18,7 @@ public class Car {
     }
 
     private boolean moveCondition(int randomNumber) {
-        return randomNumber >= CarConstants.CAR_MOVE_CONDITION;
+        return randomNumber >= MoveConstants.MOVE_CONDITION;
     }
 
     public Position getPosition() {
@@ -35,5 +35,14 @@ public class Car {
 
     public boolean samePosition(Position maxPosition) {
         return position.equals(maxPosition);
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + position;
     }
 }

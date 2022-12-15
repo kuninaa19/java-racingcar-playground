@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.constants.CarConstants;
+import racingcar.constants.PositionConstants;
 
 public class Position {
 
@@ -34,5 +35,16 @@ public class Position {
         if (o == null || getClass() != o.getClass()) return false;
         Position position1 = (Position) o;
         return position == position1.position;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder positionUI = new StringBuilder();
+
+        for (int i = 0; i < position; i++) {
+            positionUI.append(PositionConstants.POSITION_UI_CHECKER);
+        }
+
+        return positionUI.toString();
     }
 }

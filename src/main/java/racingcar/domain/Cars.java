@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.constants.CarConstants;
+import racingcar.constants.CarsConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +45,22 @@ public class Cars {
         }
 
         return maxPosition;
+    }
+
+    public void move() {
+        for (Car car : cars) {
+            car.move(RandomNumberGenerator.randomNumberInRange());
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder carsResult = new StringBuilder();
+
+        for (Car car : cars) {
+            carsResult.append(car);
+            carsResult.append(CarsConstants.NEW_LINE);
+        }
+        return carsResult.toString();
     }
 }

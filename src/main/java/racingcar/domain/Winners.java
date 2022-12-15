@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.constants.WinnersConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,5 +32,16 @@ public class Winners {
 
     public List<Car> getWinners() {
         return winners;
+    }
+
+    public String getWinnerNames() {
+        StringBuilder names = new StringBuilder();
+
+        for (Car winner : winners) {
+            names.append(WinnersConstants.WINNER_NAME_SEPARATOR).append(winner.getName());
+        }
+
+        String namesString = names.toString();
+        return namesString.replaceFirst(WinnersConstants.WINNER_NAME_SEPARATOR, WinnersConstants.BLANK);
     }
 }
