@@ -19,7 +19,7 @@
   * [x] 자동차 입력
   * [x] 시도할 횟수 입력
 
-* [ ] 에러 처리
+* [x] 에러 처리
   - 사용자가 잘못된 값을 입력한 경우 IllegalArgumentException 발생
   - "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분에서 입력을 다시 받는다.
   - Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
