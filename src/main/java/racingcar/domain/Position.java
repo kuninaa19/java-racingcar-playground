@@ -1,32 +1,31 @@
 package racingcar.domain;
 
-import racingcar.constants.CarConstants;
-import racingcar.constants.PositionConstants;
+import java.util.Objects;
 
 public class Position {
+    private static final int INITIAL_POSITION = 0;
+    private static final String GUI_POSITION = "-";
 
     private final int position;
 
     public Position() {
-        position = CarConstants.CAR_INITIAL_POSITION;
+        this(INITIAL_POSITION);
     }
 
     public Position(int position) {
         this.position = position;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public Position move() {
-        int position = this.position + 1;
-
-        return new Position(position);
+        return new Position(position + 1);
     }
 
     public boolean largerThan(Position maxPosition) {
         return position > maxPosition.getPosition();
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
@@ -38,11 +37,16 @@ public class Position {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(position);
+    }
+
+    @Override
     public String toString() {
         StringBuilder positionUI = new StringBuilder();
 
         for (int i = 0; i < position; i++) {
-            positionUI.append(PositionConstants.POSITION_UI_CHECKER);
+            positionUI.append(GUI_POSITION);
         }
 
         return positionUI.toString();
