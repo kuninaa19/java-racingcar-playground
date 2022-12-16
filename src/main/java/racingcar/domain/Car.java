@@ -1,8 +1,8 @@
 package racingcar.domain;
 
-import racingcar.constants.MoveConstants;
-
 public class Car {
+    private static final int MOVE_CONDITION = 4;
+
     private final Name name;
     private Position position;
 
@@ -22,7 +22,7 @@ public class Car {
     }
 
     private boolean moveCondition(int randomNumber) {
-        return randomNumber >= MoveConstants.MOVE_CONDITION;
+        return randomNumber >= MOVE_CONDITION;
     }
 
     public Position getMaxPosition(Position maxPosition) {
