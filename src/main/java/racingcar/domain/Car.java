@@ -7,12 +7,12 @@ public class Car {
     private Position position;
 
     public Car(String name) {
-        this(new Name(name), new Position());
+        this(name, 0);
     }
 
-    public Car(Name name, Position position) {
-        this.name = name;
-        this.position = position;
+    public Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
     public void move(int randomNumber) {

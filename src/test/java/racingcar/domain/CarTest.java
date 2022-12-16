@@ -24,7 +24,7 @@ public class CarTest {
 
     @Test
     void 자동차_동일한_위치() {
-        Car crong = new Car(new Name("crong"), new Position(2));
+        Car crong = new Car("crong", 2);
 
         assertThat(crong.samePosition(new Position(2))).isTrue();
     }
