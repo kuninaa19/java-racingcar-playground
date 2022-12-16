@@ -12,7 +12,7 @@ public class CarsTest {
     void 쉼표기준으로_자동차_3개만들기() {
         Cars cars = new Cars("pobi,crong,honux");
 
-        assertThat(cars.count()).isEqualTo(3);
+        assertThat(cars).usingRecursiveComparison().isEqualTo(new Cars("pobi,crong,honux"));
     }
 
     @Test
