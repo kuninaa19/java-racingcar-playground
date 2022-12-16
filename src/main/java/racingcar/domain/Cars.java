@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private static final String NAME_SEPARATOR = ",";
@@ -44,12 +45,8 @@ public class Cars {
         }
     }
 
-    public int count() {
-        return cars.size();
-    }
-
-    public List<Car> getCars() {
-        return cars;
+    public List<Car> getWinners(Position maxPosition) {
+        return cars.stream().filter(car -> car.samePosition(maxPosition)).collect(Collectors.toList());
     }
 
     @Override
