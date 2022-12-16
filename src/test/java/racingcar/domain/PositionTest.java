@@ -1,35 +1,24 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PositionTest {
-
-    private Position position;
-
-    @BeforeEach
-    void setUp() {
-        position = new Position();
+    @Test
+    void 초기화() {
+        assertThat(new Position()).isEqualTo(new Position());
     }
 
     @Test
-    void 위치_초기_값_0() {
-        assertThat(position.getPosition()).isEqualTo(0);
+    void 이동() {
+        Position position = new Position();
+        assertThat(position.move()).isEqualTo(new Position(1));
     }
 
     @Test
-    void 이동_1회() {
-        Position position = this.position.move();
-        assertThat(position.getPosition()).isEqualTo(1);
+    void 위치표시() {
+        Position position = new Position(1);
+        assertThat(position.toString()).isEqualTo("-");
     }
-
-    @Test
-    void 이동_2회() {
-        Position firstMovePosition = this.position.move();
-        Position secondMoveposition = firstMovePosition.move();
-        assertThat(secondMoveposition.getPosition()).isEqualTo(2);
-    }
-
 }
