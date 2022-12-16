@@ -38,7 +38,7 @@ public class Car {
     }
 
     public String getName() {
-        return name.getName();
+        return name.toString();
     }
 
     @Override
