@@ -17,14 +17,8 @@ public class CarsTest {
 
     @Test
     void 포지션_가장_높은_값_가져오기() {
-        Car crong = new Car("crong");
-        crong.move(4);
-        crong.move(4);
-        crong.move(4);
-
-        Car pobi = new Car("pobi");
-        pobi.move(4);
-        pobi.move(4);
+        Car crong = new Car("crong", 3);
+        Car pobi = new Car("pobi", 2);
 
         Cars cars = new Cars(Arrays.asList(crong, pobi));
 

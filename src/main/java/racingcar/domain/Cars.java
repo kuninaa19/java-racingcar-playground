@@ -1,12 +1,11 @@
 package racingcar.domain;
 
-import racingcar.constants.CarConstants;
-import racingcar.constants.CarsConstants;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+    private static final String NAME_SEPARATOR = ",";
+
     private final List<Car> cars;
 
     public Cars(String inputs) {
@@ -19,7 +18,7 @@ public class Cars {
 
     private static List<Car> createCars(String inputs) {
         List<Car> tempCars = new ArrayList<>();
-        String[] carNames = inputs.split(CarConstants.CAR_NAME_SEPARATOR);
+        String[] carNames = inputs.split(NAME_SEPARATOR);
 
         for (String carName : carNames) {
             Car car = new Car(carName);
@@ -27,14 +26,6 @@ public class Cars {
         }
 
         return tempCars;
-    }
-
-    public int count() {
-        return cars.size();
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     public Position getMaxPosition() {
@@ -53,14 +44,22 @@ public class Cars {
         }
     }
 
+    public int count() {
+        return cars.size();
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
     @Override
     public String toString() {
         StringBuilder carsResult = new StringBuilder();
 
         for (Car car : cars) {
             carsResult.append(car);
-            carsResult.append(CarsConstants.NEW_LINE);
         }
+
         return carsResult.toString();
     }
 }
