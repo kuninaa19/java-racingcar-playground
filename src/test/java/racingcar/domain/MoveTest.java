@@ -10,7 +10,7 @@ public class MoveTest {
     @Test
     void 진행횟수_양수입력() {
         Move move = new Move("1");
-        assertThat(move.getCount()).isEqualTo(1);
+        assertThat(move).isEqualTo(new Move("1"));
     }
 
     @Test

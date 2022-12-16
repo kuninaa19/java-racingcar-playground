@@ -1,9 +1,12 @@
 package racingcar.domain;
 
-import racingcar.constants.MoveConstants;
 import racingcar.messages.ErrorMessages;
 
+import java.util.Objects;
+
 public class Move {
+    private static final int MOVE_COUNT = 0;
+
     private final int count;
 
     public Move(String count) {
@@ -22,12 +25,25 @@ public class Move {
     }
 
     private void checkSignedInt(int count) {
-        if (count <= MoveConstants.MOVE_COUNT) {
+        if (count <= MOVE_COUNT) {
             throw new IllegalArgumentException(ErrorMessages.MOVE_COUNT_VALUE_EXCEPTION);
         }
     }
 
     public int getCount() {
         return count;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Move move = (Move) o;
+        return count == move.count;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(count);
     }
 }
