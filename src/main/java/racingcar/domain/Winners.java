@@ -1,47 +1,51 @@
 package racingcar.domain;
 
-import racingcar.constants.WinnersConstants;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Winners {
-    private final List<Car> winners;
+    private static final String NAME_SEPARATOR = ",";
+
+    private final List<String> winners;
 
     public Winners(Cars cars) {
         this.winners = createWinners(cars);
     }
 
-    private static List<Car> createWinners(Cars cars) {
-        List<Car> tempWinners = new ArrayList<>();
+    public Winners(List<String> winners) {
+        this.winners = winners;
+    }
+
+    private static List<String> createWinners(Cars cars) {
+        List<String> WinnerNames = new ArrayList<>();
 
         Position maxPosition = cars.getMaxPosition();
 
-        for (Car car : cars.getCars()) {
-            addWinner(tempWinners, maxPosition, car);
+        List<Car> winners = cars.getWinners(maxPosition);
+
+        for (Car car : winners) {
+            WinnerNames.add(car.getName());
         }
 
-        return tempWinners;
+        return WinnerNames;
     }
 
-    private static void addWinner(List<Car> tempWinners, Position maxPosition, Car car) {
-        if (car.samePosition(maxPosition)) {
-            tempWinners.add(car);
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Winners winners1 = (Winners) o;
+        return Objects.equals(winners, winners1.winners);
     }
 
-    public List<Car> getWinners() {
-        return winners;
+    @Override
+    public int hashCode() {
+        return Objects.hash(winners);
     }
 
-    public String getWinnerNames() {
-        StringBuilder names = new StringBuilder();
-
-        for (Car winner : winners) {
-            names.append(WinnersConstants.WINNER_NAME_SEPARATOR).append(winner.getName());
-        }
-
-        String namesString = names.toString();
-        return namesString.replaceFirst(WinnersConstants.WINNER_NAME_SEPARATOR, WinnersConstants.BLANK);
+    @Override
+    public String toString() {
+        return String.join(NAME_SEPARATOR, winners);
     }
 }

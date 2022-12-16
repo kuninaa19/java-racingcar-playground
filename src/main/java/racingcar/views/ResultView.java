@@ -19,6 +19,6 @@ public class ResultView {
     }
 
     public static void printPlayWinners(Winners winners) {
-        System.out.print(winners.getWinnerNames() + ConsoleMessages.PLAY_RESULT_WINNERS);
+        System.out.print(winners + ConsoleMessages.PLAY_RESULT_WINNERS);
     }
 }
