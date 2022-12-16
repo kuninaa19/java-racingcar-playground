@@ -35,4 +35,11 @@ public class CarTest {
 
         assertThat(crong.getMaxPosition(new Position(3))).isEqualTo(new Position(3));
     }
+
+    @Test
+    void 포지션_ui_표시() {
+        Car crong = new Car("crong", 1);
+
+        assertThat(crong.toString()).contains("crong : -");
+    }
 }
