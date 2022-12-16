@@ -6,9 +6,13 @@ public class Car {
     private final Name name;
     private Position position;
 
-    public Car(String carName) {
-        this.name = new Name(carName);
-        this.position = new Position();
+    public Car(String name) {
+        this(new Name(name), new Position());
+    }
+
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
     }
 
     public void move(int randomNumber) {
@@ -19,10 +23,6 @@ public class Car {
 
     private boolean moveCondition(int randomNumber) {
         return randomNumber >= MoveConstants.MOVE_CONDITION;
-    }
-
-    public Position getPosition() {
-        return position;
     }
 
     public Position getMaxPosition(Position maxPosition) {

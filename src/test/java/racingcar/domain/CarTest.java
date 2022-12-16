@@ -10,8 +10,8 @@ public class CarTest {
     void 자동차_이동() {
         Car crong = new Car("crong");
         crong.move(4);
-        Position position = crong.getPosition();
-        assertThat(position.getPosition()).isEqualTo(1);
+
+        assertThat(crong.samePosition(new Position(1))).isTrue();
     }
 
     @Test
@@ -19,21 +19,20 @@ public class CarTest {
         Car crong = new Car("crong");
         crong.move(3);
 
-        Position position = crong.getPosition();
-
-        assertThat(position.getPosition()).isEqualTo(0);
+        assertThat(crong.samePosition(new Position(0))).isTrue();
     }
 
     @Test
     void 자동차_동일한_위치() {
+        Car crong = new Car(new Name("crong"), new Position(2));
+
+        assertThat(crong.samePosition(new Position(2))).isTrue();
+    }
+
+    @Test
+    void 자동차_위치_비교() {
         Car crong = new Car("crong");
-        crong.move(4);
-        crong.move(4);
 
-        Car pobi = new Car("pobi");
-        pobi.move(4);
-        pobi.move(4);
-
-        assertThat(crong.samePosition(pobi.getPosition())).isTrue();
+        assertThat(crong.getMaxPosition(new Position(3))).isEqualTo(new Position(3));
     }
 }
